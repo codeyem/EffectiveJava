@@ -18,8 +18,16 @@ public class CaseInsensitiveString {
             return s.equalsIgnoreCase(((CaseInsensitiveString) obj).s);
         }
         if (obj instanceof String) {
-            return s.equals(obj);
+            return s.equalsIgnoreCase((String) obj);
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        String str = "ab";
+        CaseInsensitiveString str1 = new CaseInsensitiveString("Ab");
+        System.out.println(str1.equals(str));
+        System.out.println(str.equals(str1));
+
     }
 }
