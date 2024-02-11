@@ -37,13 +37,16 @@ public enum Opeartion {
 
     private final String symbol;
 
+    public String getSymbol(){
+        return this.symbol;
+    }
     Opeartion(String symbol) {
         this.symbol = symbol;
     }
 
     public abstract double apply(double x, double y);
 
-    private static final Map<String, Opeartion> stringToEnums = Stream.of(values()).collect(Collectors.toMap(Objects::toString, e -> e));
+    private static final Map<String, Opeartion> stringToEnums = Stream.of(values()).collect(Collectors.toMap(e -> e.getSymbol(), e -> e));
 
     public static Optional<Opeartion> fromString(String symbol) {
         return Optional.ofNullable(stringToEnums.get(symbol));
